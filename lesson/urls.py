@@ -2,10 +2,10 @@ from django.urls import path
 from rest_framework import routers
 
 from lesson.views import LessonListView, LessonRetrieveView, LessonCreateView, LessonUpdateView, LessonDestroyView, \
-    WellViewSet
+    CourseViewSet
 
 router = routers.DefaultRouter()
-router.register(r'well', WellViewSet)
+router.register(r'course', CourseViewSet)
 
 urlpatterns = [
     path('', LessonListView.as_view()),
