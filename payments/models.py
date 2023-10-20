@@ -1,5 +1,6 @@
 from django.db import models
 
+from lesson.models import Course, Lesson
 from users.models import User
 
 
@@ -19,7 +20,8 @@ class Payments(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name='дата оплаты')
     payment_amount = models.IntegerField(verbose_name='сумма оплаты')
     payment_method = models.CharField(max_length=50, default='перевод', choices=PAYMENTS_METHOT, verbose_name="способ оплаты")
-    payment_course_lesson = models.CharField(max_length=50, choices=PAYMENTS_COURSE_LESSON, verbose_name='платеж')
+    payment_course = models.ForeignKey(Course, on_delete=models.PROTECT, verbose_name='платеж за курс', null=True, blank=True)
+    payment_lesson = models.ForeignKey(Lesson, on_delete=models.PROTECT, verbose_name='платеж за урок', null=True, blank=True)
 
 
 
