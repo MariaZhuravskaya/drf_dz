@@ -1,8 +1,11 @@
 
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 from users.models import User
-from users.serializers import UserSerializers
+from users.serializers import UserSerializers, MyTokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
 
 
 class UserListView(generics.ListAPIView):
@@ -28,3 +31,7 @@ class UserUpdateView(generics.UpdateAPIView):
 class UserDestroyView(generics.DestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializers
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
