@@ -4,12 +4,18 @@ from lesson.models import Lesson, Course
 
 
 class LessonSerializers(serializers.ModelSerializer):
+    """
+    Сериализатор для представления урока
+    """
     class Meta:
         model = Lesson
         fields = '__all__'
 
 
 class CourseSerializers(serializers.ModelSerializer):
+    """
+    Сериализатор для представления курса
+    """
     lesson_count = serializers.SerializerMethodField()
     lesson = serializers.SerializerMethodField()
 

@@ -6,6 +6,9 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class Course(models.Model):
+    """
+    Модель описывающая курс
+    """
     name = models.CharField(max_length=150, verbose_name='название курса')
     img = models.ImageField(upload_to='well/', verbose_name='картинка', **NULLABLE)
     description = models.TextField(verbose_name='описание', **NULLABLE)
@@ -13,6 +16,9 @@ class Course(models.Model):
 
 
 class Lesson(models.Model):
+    """
+    Модель описывающая урок
+    """
     name = models.CharField(max_length=150, verbose_name='название курса')
     img = models.ImageField(upload_to='lesson/', verbose_name='картинка', **NULLABLE)
     description = models.TextField(verbose_name='описание', **NULLABLE)

@@ -6,6 +6,9 @@ from users.models import User
 
 
 class UserSerializers(serializers.ModelSerializer):
+    """
+    Сериализатор для представления пользователя
+    """
     payments = serializers.SerializerMethodField()
 
     def get_payments(self, obj_user):

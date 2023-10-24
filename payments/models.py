@@ -5,7 +5,9 @@ from users.models import User
 
 
 class Payments(models.Model):
-
+    """
+     Модель описывающая платеж
+     """
     PAYMENTS_METHOT = [
         ("перевод", "перевод"),
         ("наличные", "наличные"),

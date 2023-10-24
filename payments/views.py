@@ -15,16 +15,25 @@ class PaymentsListView(generics.ListAPIView):
 
 
 class PaymentsRetrieveView(generics.RetrieveAPIView):
+    """
+    Представление для просмотра платежа
+    """
     queryset = Payments.objects.all()
     serializer_class = PaymentsSerializers
 
 
 class PaymentsCreateView(generics.CreateAPIView):
+    """
+    Представление для создания платежа
+    """
     queryset = Payments.objects.all()
     serializer_class = PaymentsSerializers
 
 
 class PaymentsDestroyView(generics.DestroyAPIView):
+    """
+    Представление для удаления платежа
+    """
     queryset = Payments.objects.all()
     serializer_class = PaymentsSerializers
 
