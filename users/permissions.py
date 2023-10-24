@@ -14,13 +14,3 @@ class IsOwner(BasePermission):
         return False
 
 
-class IsModerator(BasePermission):
-    def has_permission(self, request, view):
-        if request.user.role == UserRoles.MODERATOR:
-            return True
-        return False
-
-
-class IsNotModerator(BasePermission):
-    def has_permission(self, request, view):
-        return not user.groups.filter(name='Moderator')
