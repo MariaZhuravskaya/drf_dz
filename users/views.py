@@ -51,5 +51,5 @@ class UserDestroyView(generics.DestroyAPIView):
     serializer_class = UserSerializers
 
 
-class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
+# class MyTokenObtainPairView(TokenObtainPairView):
+#     serializer_class = MyTokenObtainPairSerializer
