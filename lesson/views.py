@@ -90,4 +90,4 @@ class LessonDestroyView(generics.DestroyAPIView):
     """
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializers
-    permission_classes = [IsNotModerator | IsOwner]
+    permission_classes = [IsOwner]
