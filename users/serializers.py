@@ -20,13 +20,5 @@ class UserSerializers(serializers.ModelSerializer):
         fields = ['id', 'email', 'name', 'city', 'payments']
 
 
-# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-#     @classmethod
-#     def get_token(cls, user):
-#         token = super().get_token(user)
-#
-#         # Добавление пользовательских полей в токен
-#         token['email'] = user.email
-#
-#         return token
+
 
