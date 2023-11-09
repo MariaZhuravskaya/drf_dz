@@ -216,3 +216,16 @@ class SubscriptionTestCase(APITestCase):
             status.HTTP_204_NO_CONTENT
         )
 
+
+
+ # data = {
+ #            'place': 'беговая дорожка',
+ #            'time': '00:08:00',
+ #            'action': 'бег',
+ #            'is_pleasant': True,
+ #            'period': 'one',
+ #            'reward': '',
+ #            'time_performance': 60,
+ #            'is_pablish': True,
+ #            'user': 1,
+ #        }

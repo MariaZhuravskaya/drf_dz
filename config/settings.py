@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-*5gse@o7y_#zwk9)48udn7bmp34t)1b(xs*2+-vcg(46@*%y_l
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'testserver'
+    'testserver',
+    'localhost'
 ]
 
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
 
     'rest_framework',
     'rest_framework_simplejwt',
