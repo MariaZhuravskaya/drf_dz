@@ -8,6 +8,7 @@ from lesson.models import Lesson, Course, Subscription
 from lesson.paginators import LessonPagination, CoursePagination
 from lesson.permissions import IsModerator, IsOwner, IsNotModerator
 from lesson.serializers import LessonSerializers, CourseSerializers, SubscriptionSerializers
+from lesson.tasks import send_mail_update_course
 
 
 class CourseViewSet(ModelViewSet):
@@ -72,6 +73,10 @@ class CourseUpdateView(generics.UpdateAPIView):
         serializer.save()
         email = serializer.context['request'].user
         self.send_mailing(email)
+
+        send_mail_update_course.delay(email)
+        # result.successful()
+        print(f"рассылка на обновление отправлена на {email}")
 
 
 class LessonListView(generics.ListAPIView):

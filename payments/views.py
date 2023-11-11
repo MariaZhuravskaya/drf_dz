@@ -1,3 +1,5 @@
+import os
+
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -27,20 +29,6 @@ class PaymentsRetrieveView(generics.RetrieveAPIView):
     queryset = Payments.objects.all()
     serializer_class = PaymentsSerializers
 
-    # def get_payment(self, request, payment_id):
-    #     """
-    #     Метод получения информации о платеже
-    #     """
-    #     stripe.api_key = "sk_test_51OARKLKwGyIdGx42RzISiKP4tOWagFLbZsfNMUoVeY0ktA5B3K0xw6W1B7oHM22xlUBD3u1sfnO2VDL5FvynTded00CWr6ZCgv"
-    #
-    #     payments_retrieve = stripe.PaymentIntent.retrieve(
-    #         payment_id,
-    #     )
-    #     print(payments_retrieve.status)
-    #     return Response({
-    #         'status': payments_retrieve.status,
-    #         'body': payments_retrieve})
-
 
 class PaymentsCreateView(generics.CreateAPIView):
     """
@@ -54,12 +42,15 @@ class PaymentsCreateView(generics.CreateAPIView):
         Метод для создания объекта PaymentIntent
         """
         payment = serializer.save()
-        stripe.api_key = "sk_test_51OARKLKwGyIdGx42RzISiKP4tOWagFLbZsfNMUoVeY0ktA5B3K0xw6W1B7oHM22xlUBD3u1sfnO2VDL5FvynTded00CWr6ZCgv"
+        stripe.api_key = os.getenv('API_KEY')
         pay = stripe.PaymentIntent.create(
             amount=payment.payment_amount,
             currency="usd",
             payment_course=payment.payment_course,
-            automatic_payment_methods={"enabled": True},
+            #automatic_payment_methods={"enabled": True},
+            confirm=True,
+            payment_method="pm_card_visa",
+            return_url="http://localhost:8000/payments/return_url",
         )
         pay.save()
         return super().perform_create(serializer)

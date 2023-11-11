@@ -6,6 +6,7 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class Course(models.Model):
+    app_label = 'lesson'
     """
     Модель описывающая курс
     """
