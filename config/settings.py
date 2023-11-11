@@ -187,9 +187,9 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
 CELERY_BEAT_SCHEDULE = {
-    'task-staff': {
-        'task': 'users.tasks.is_staff_false',
-        'schedule': timedelta(minutes=1),
+    'task-is-active': {
+        'task': 'users.tasks.is_active_false',
+        'schedule': timedelta(days=1),
     },
 }
 
