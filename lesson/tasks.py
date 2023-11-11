@@ -12,3 +12,5 @@ def send_mail_update_course(email):
         recipient_list=[email]
     )
     print("Отложенное уведомление отправлено")
+
+

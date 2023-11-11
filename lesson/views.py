@@ -71,12 +71,10 @@ class CourseUpdateView(generics.UpdateAPIView):
 
     def perform_update(self, serializer):
         serializer.save()
-        email = serializer.context['request'].user
+        email = serializer.context['request'].user.email
         self.send_mailing(email)
 
         send_mail_update_course.delay(email)
-        # result.successful()
-        print(f"рассылка на обновление отправлена на {email}")
 
 
 class LessonListView(generics.ListAPIView):
