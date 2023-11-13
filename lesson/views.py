@@ -74,7 +74,12 @@ class CourseUpdateView(generics.UpdateAPIView):
         email = serializer.context['request'].user.email
         self.send_mailing(email)
 
-        send_mail_update_course.delay(email)
+        user = serializer.context['request'].user.id
+        subscription = serializer.data['subscription']
+
+        for sub in subscription:
+            if sub['user'] == user and sub['is_active'] == True:
+                send_mail_update_course.delay(email)
 
 
 class LessonListView(generics.ListAPIView):
